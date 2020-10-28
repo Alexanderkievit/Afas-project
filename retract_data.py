@@ -1,3 +1,4 @@
+# Dit is de testdata 
 data = {
     "data": {
         "procurementAnalysisID": "12",
@@ -19,25 +20,29 @@ data = {
                     "description": "Melk"
                 },
                 "procurementVolumeInEuros": 24
+            },
+            {
+                "ID": "4525",
+                "description": "Snoep",
+                "nourishmentType": {
+                    "ID": "344",
+                    "description": "Zoet"
+                },
+                "procurementVolumeInEuros": 13
             }
         ]
     }
 }
 
-data = data
-
-dictionary = {
+dictionary_of_products = {
     'soort product (keuzelijst)': '',
     'productgroep (keuzelijst)': '',
     'inkoopvolume': '' 
 }
-
+# Het halen van values uit de dictiornary en stoppen in een nieuwe dictionary
 for item in data.values():
-    eersteID = item['procurementAnalysisID']
-    goede = item['products']
-    # print(eersteID)
-    # print(goede[1])
-    for products in goede:
+    next_layer = item['products']
+    for products in next_layer:
 
         productomschrijving = products['description']
         waarde = products['procurementVolumeInEuros']
@@ -45,5 +50,5 @@ for item in data.values():
         
 
         new_list = [productomschrijving, productgroepen, waarde]
-        new_dict = dict(zip(dictionary, new_list))
-        print(new_dict
+        new_dict = dict(zip(dictionary_of_products, new_list))
+        print(new_dict)
